@@ -44,7 +44,7 @@ public class App extends Application {
 3 - Convert audio files async
 ```java
 int idFileConvert = 2;
-File flacFile = new File(Environment.getExternalStorageDirectory(), "my_audio.flac");
+File m4aFile = new File(Environment.getExternalStorageDirectory(), "my_audio.m4a");
 IConvertCallback callback = new IConvertCallback() {
     @Override
     public void onSuccess(int id, String convertedFilePath) {
@@ -57,13 +57,13 @@ IConvertCallback callback = new IConvertCallback() {
 };
 AndroidAudioConverter.with(this)
     // Your current audio file
-    .setFile(flacFile, idFileConvert)
+    .setFile(m4aFile, idFileConvert)
     
     // Your desired audio format 
     .setFormat(AudioFormat.MP3)
 
     // Set different output folder (optional)
-        .setFormat(AudioFormat.MP3)
+    .setOutFolder(Environment.getExternalStorageDirectory()+"/Download")
     
     // An callback to know when conversion is finished
     .setCallback(callback)
