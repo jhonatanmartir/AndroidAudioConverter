@@ -38,17 +38,19 @@ public class MainActivity extends AppCompatActivity {
         File wavFile = new File(Environment.getExternalStorageDirectory(), "recorded_audio.wav");
         IConvertCallback callback = new IConvertCallback() {
             @Override
-            public void onSuccess(File convertedFile) {
-                Toast.makeText(MainActivity.this, "SUCCESS: " + convertedFile.getPath(), Toast.LENGTH_LONG).show();
+            public void onSuccess(int id, String convertedFilePath) {
+                Toast.makeText(MainActivity.this, "SUCCESS: " + convertedFilePath, Toast.LENGTH_LONG).show();
             }
+
             @Override
-            public void onFailure(Exception error) {
+            public void onFailure(int id, Exception error) {
                 Toast.makeText(MainActivity.this, "ERROR: " + error.getMessage(), Toast.LENGTH_LONG).show();
             }
         };
+
         Toast.makeText(this, "Converting audio file...", Toast.LENGTH_SHORT).show();
         AndroidAudioConverter.with(this)
-                .setFile(wavFile)
+                .setFile(wavFile, 1)
                 .setFormat(AudioFormat.MP3)
                 .setCallback(callback)
                 .convert();
