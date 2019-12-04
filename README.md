@@ -43,23 +43,27 @@ public class App extends Application {
 
 3 - Convert audio files async
 ```java
+int idFileConvert = 2;
 File flacFile = new File(Environment.getExternalStorageDirectory(), "my_audio.flac");
 IConvertCallback callback = new IConvertCallback() {
     @Override
-    public void onSuccess(File convertedFile) {
+    public void onSuccess(int id, String convertedFilePath) {
         // So fast? Love it!
     }
     @Override
-    public void onFailure(Exception error) {
+    public void onFailure(int id, Exception error) {
         // Oops! Something went wrong
     }
 };
 AndroidAudioConverter.with(this)
     // Your current audio file
-    .setFile(flacFile)  
+    .setFile(flacFile, idFileConvert)
     
     // Your desired audio format 
     .setFormat(AudioFormat.MP3)
+
+    // Set different output folder (optional)
+        .setFormat(AudioFormat.MP3)
     
     // An callback to know when conversion is finished
     .setCallback(callback)
@@ -78,7 +82,7 @@ repositories {
 }
 
 dependencies {
-  compile 'com.github.adrielcafe:AndroidAudioConverter:0.0.8'
+  implementation 'com.github.jhonatanmartir:AndroidAudioConverter:0.0.9'
 }
 ```
 
