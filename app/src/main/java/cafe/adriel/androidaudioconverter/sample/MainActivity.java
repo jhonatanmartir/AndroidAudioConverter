@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
          *  Update with a valid audio file!
          *  Supported formats: {@link AndroidAudioConverter.AudioFormat}
          */
-        File wavFile = new File(Environment.getExternalStorageDirectory(), "recorded_audio.wav");
+        File wavFile = new File(Environment.getExternalStorageDirectory(), "recorded_audio.m4a");
         IConvertCallback callback = new IConvertCallback() {
             @Override
             public void onSuccess(int id, String convertedFilePath) {
@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         AndroidAudioConverter.with(this)
                 .setFile(wavFile, 1)
                 .setFormat(AudioFormat.MP3)
+                .setOutFolder(Environment.getExternalStorageDirectory()+"/Download")
                 .setCallback(callback)
                 .convert();
     }
