@@ -1,11 +1,9 @@
 package cafe.adriel.androidaudioconverter.callback;
 
-import java.io.File;
-
 public interface IConvertCallback {
     
-    void onSuccess(File convertedFile);
+    void onSuccess(int id, String convertedFilePath);
     
-    void onFailure(Exception error);
+    void onFailure(int id, Exception error);
 
 }
