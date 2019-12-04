@@ -19,6 +19,6 @@ android {
 }
 
 dependencies {
-    compile 'androidx.appcompat:appcompat:1.0.0'
-    compile project(':lib')
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation project(':lib')
 }
